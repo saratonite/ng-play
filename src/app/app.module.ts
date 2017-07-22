@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component';
@@ -10,7 +11,8 @@ import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component
     WhySoSeriousComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   schemas: [

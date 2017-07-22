@@ -2,6 +2,7 @@
 <div style="text-align:center">
 
   <h1>Why So Serious</h1>
-  <app-why-so-serious [ngModel]="funnyText"></app-why-so-serious>
+  {{funnyText}}
+  <app-why-so-serious [(ngModel)]="funnyText" [(cleanedString)]="funnyText"></app-why-so-serious>
 </div>
 
