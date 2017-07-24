@@ -2,11 +2,16 @@
 
 <div style="text-align:center">
 
-  <form #form="ngForm">
-  {{funnyText}}
-  <app-why-so-serious [type]="inputType"  styleClass='green'  name="funnyText" [(ngModel)]="funnyText"></app-why-so-serious>
+  <section>
+    <h3>Why so serious component </h3>
+    <p>Sample custom form input</p>
+    <form #form="ngForm">
 
-  </form>
+      <app-why-so-serious [type]="inputType"  styleClass='green'  name="funnyText" [(ngModel)]="funnyText"></app-why-so-serious>
+
+    </form>
+  </section>
+  
 
 
   <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
