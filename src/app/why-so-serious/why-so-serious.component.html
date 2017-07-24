@@ -1,9 +1,23 @@
 <div>
+  <!--for text type  -->
   <input type="text" 
-  
+    *ngIf="type == 'text'"
     [(ngModel)]="data"
     (change)="onChange($event)"
     (keyup)="onChange($event)"
+    [ngStyle]="style"
+    [ngClass]="styleClass"
   />
-  <p>{{data}}</p>
+  <!--For textare  -->
+  <textarea type="text" 
+    *ngIf="type == 'textarea'"
+    [(ngModel)]="data"
+    (change)="onChange($event)"
+    (keyup)="onChange($event)"
+    [ngStyle]="style"
+    [ngClass]="styleClass"
+  ></textarea>
+  <span *ngIf="parseError && !hideFix" class="parseErrorContainer">
+    Parse error!! <a href="javascript:;" (click)="fixParseError($event)" title="Fix errors?">Fix It!</a>
+  </span>
 </div>

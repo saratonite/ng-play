@@ -22,14 +22,16 @@ import { ControlValueAccessor,NgModel, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormCon
 })
 export class WhySoSeriousComponent implements OnInit,ControlValueAccessor  {
 
+  @Input('type') type:string = 'text';
+  @Input('style') style: any = {};
+  @Input('styleClass') styleClass: string = '';
 
+  @Input('hideFix') hideFix: boolean = false;
   private data: string = '';
 
   private cleanedString: string = '';
 
   private parseError: boolean;
-
-   @ViewChild(NgModel) model: NgModel;
 
   constructor() { }
 
@@ -43,9 +45,14 @@ export class WhySoSeriousComponent implements OnInit,ControlValueAccessor  {
 
     // this is the initial value set to the component
     public writeValue(obj: any) {
+      console.log('::writeValue')
         if (obj) {
             this.data = obj;
             // this will format it with 4 character spacing
+            if(this.data.length > 4) {
+
+              this.parseError = true;
+            }
             this.cleanedString = this.data.substr(0,3);//JSON.stringify(this.data, undefined, 4); 
         }
     }
@@ -62,6 +69,7 @@ export class WhySoSeriousComponent implements OnInit,ControlValueAccessor  {
 
     // change events from the textarea
     private onChange(event) {
+
 
       let newValue = event.target.value;
 
@@ -82,11 +90,22 @@ export class WhySoSeriousComponent implements OnInit,ControlValueAccessor  {
     // in this case we're checking if the json parsing has 
     // passed or failed from the onChange method
       public validate(c: FormControl) {
+        console.log('::validate')
         return (!this.parseError) ? null : {
-            jsonParseError: {
+            parseError: {
                 valid: false,
             },
         };
+    }
+    
+    /**
+     * 
+     * @param event Fix parse error
+     */
+    fixParseError(event) {
+
+      this.data = this.data.substr(0,3);
+      this.propagateChange(this.data);
     }
 
 }

@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-
+  inputType = 'text';
   funnyText = 'Why so serious :| ?'
+
+  displayFix:false;
 }

@@ -1,8 +1,15 @@
 <!--The whole content below can be removed with the new code.-->
+
 <div style="text-align:center">
 
-  <h1>Why So Serious</h1>
+  <form #form="ngForm">
   {{funnyText}}
-  <app-why-so-serious [(ngModel)]="funnyText" [(cleanedString)]="funnyText"></app-why-so-serious>
+  <app-why-so-serious [type]="inputType"  styleClass='green'  name="funnyText" [(ngModel)]="funnyText"></app-why-so-serious>
+
+  </form>
+
+
+  <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
+  
 </div>
 
