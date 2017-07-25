@@ -1,0 +1,20 @@
+<p>
+  png-try-tree works!
+  <p-tree [value]="data"  draggableNodes="true" droppableNodes="true" dragdropScope="files" selectionMode="single" [(selection)]="selectedFile">
+     <ng-template let-node  pTemplate="default">
+        <div class="card">
+           <div class="card-block">
+           <div class="row">
+                {{node.label}}
+
+           </div>
+           </div>
+       </div>
+    </ng-template>
+      <ng-template let-node  pTemplate="picture">
+       <div>
+         Pucs
+         </div>
+    </ng-template>
+  </p-tree>
+</p>

@@ -2,26 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import '../../node_modules/primeng/resources/themes/omega/theme.css';
-import '../../node_modules/primeng/resources/primeng.min.css'
-
 import { AppComponent } from './app.component';
 import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component';
 
 // PrimeNg Components
-import {ButtonModule} from 'primeng/primeng';
+import {ButtonModule , TreeModule, TreeDragDropService  } from 'primeng/primeng';
+import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WhySoSeriousComponent
+    WhySoSeriousComponent,
+    PngTryTreeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    TreeModule
   ],
-  providers: [],
+  providers: [
+    TreeDragDropService
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
 ],

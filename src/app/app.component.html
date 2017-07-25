@@ -1,8 +1,8 @@
 <!--The whole content below can be removed with the new code.-->
 
-<div style="text-align:center">
+<div class="container">
 
-  <section>
+  <section class="card text-center">
     <h3>Why so serious component </h3>
     <p>Sample custom form input</p>
     <form #form="ngForm">
@@ -10,11 +10,16 @@
       <app-why-so-serious [type]="inputType"  styleClass='green'  name="funnyText" [(ngModel)]="funnyText"></app-why-so-serious>
 
     </form>
+    <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
   </section>
+  <section class="card text-center">
+
+    <h3>Prime Ng Tree</h3>
+    <app-png-try-tree></app-png-try-tree>
+  </section>
+
+
   
-
-
-  <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
-  <button pButton type="button" label="Click"></button>
+  
 </div>
 
