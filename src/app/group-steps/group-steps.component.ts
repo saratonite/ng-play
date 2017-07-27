@@ -27,9 +27,9 @@ export class GroupStepsComponent implements OnInit {
     // ]
     this.groupSteps = [ 
 
-      {steps : [{name:'value 1'},{name:'value 2'}]},
-      {steps : [{name:'value 3'},{name:'value 4'}]},
-      {steps : [{name:'value 5'},{name:'value 6'}]}
+      {steps : [{count:1,type:1},{count:2,type:2}]},
+      {steps : [{count:3, type:3},{count:4,type:4}]},
+      {steps : [{count:5,type:5},{count:6,type:6}]}
     ]
   }
 
@@ -41,7 +41,7 @@ export class GroupStepsComponent implements OnInit {
 
   addGroup($e) {
 
-    this.groupSteps.push({steps : [{name:''}]});
+    this.groupSteps.push({steps : [{count:1,type:null}]});
 
   }
 
@@ -58,7 +58,7 @@ export class GroupStepsComponent implements OnInit {
 
     if( groupIdx > -1 ) {
 
-      console.log(this.groupSteps[groupIdx].steps.push({name:''}));
+      console.log(this.groupSteps[groupIdx].steps.push({count:1,type:null}));
 
       //this.groupSteps[groupIdx].setps.push('new')
     }
@@ -78,6 +78,15 @@ export class GroupStepsComponent implements OnInit {
       if(stepIdx > -1 ) {
 
         this.groupSteps[groupIdx].steps.splice(stepIdx,1);
+      }
+
+      // Remove group if no steps 
+      if(this.groupSteps[groupIdx].steps.length === 0) {
+
+        this.groupSteps.splice(groupIdx,1);
+
+        console.log(this.groupSteps);
+
       }
 
       //this.groupSteps[groupIdx].setps.push('new')
@@ -195,6 +204,11 @@ export class GroupStepsComponent implements OnInit {
       }
 
      this.groupSteps[dropGroupIndex].steps[droppedStepIndex] = this.dragedStep;
+
+     if (this.groupSteps[dragedGroupIndex].steps.length == 0 ) {
+
+      this.groupSteps.splice(dragedGroupIndex,1);
+     }
       
 
     }

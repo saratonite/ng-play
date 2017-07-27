@@ -1,5 +1,5 @@
 <div>
-  <h1>Group Steps</h1>
+  <h1>Grouped Steps</h1>
 -
   <div *ngIf="groupSteps && groupSteps.length">
     <!--Render groups  -->
@@ -14,14 +14,23 @@
               
              
             >
-              <div class="row"
+              <div class="row" style="width:100%;"
                pDraggable="true"
                (onDragStart)="dragStart($event,group,step)"
               
                (onDragEnd)="dragEnd($event,group,step)"
               >
-                  <div class="col-md-10">
-                    <input type="text" id="step_{{i}}_{{j}}" name="step_{{i}}_{{j}}" [(ngModel)]="groupSteps[i].steps[j].name" class="form-control" />
+                  <div class="col-md-1">
+                    <input type="number" id="stepcount_{{i}}_{{j}}" name="step_{{i}}_{{j}}" [(ngModel)]="groupSteps[i].steps[j].count" class="form-control" />
+                   
+                  </div>
+                  <div class="col-md-5" >
+                    <select  id="stepname_{{i}}_{{j}}" name="stepc_{{i}}_{{j}}" [(ngModel)]="groupSteps[i].steps[j].type" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
                   </div>
                   <div class="col-md-2">
                       <button class="btn btn-danger" (click)="groupRemoveStep($event,group,step)">REMOVE</button>
