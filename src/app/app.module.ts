@@ -6,20 +6,23 @@ import { AppComponent } from './app.component';
 import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component';
 
 // PrimeNg Components
-import {ButtonModule , TreeModule, TreeDragDropService  } from 'primeng/primeng';
+import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule  } from 'primeng/primeng';
 import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
+import { GroupStepsComponent } from './group-steps/group-steps.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WhySoSeriousComponent,
-    PngTryTreeComponent
+    PngTryTreeComponent,
+    GroupStepsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ButtonModule,
-    TreeModule
+    TreeModule,
+    DragDropModule
   ],
   providers: [
     TreeDragDropService

@@ -1,0 +1,39 @@
+<div>
+  <h1>Group Steps</h1>
+-
+  <div *ngIf="groupSteps && groupSteps.length">
+    <!--Render groups  -->
+      <div class="group" *ngFor="let group of groupSteps;let i=index">
+        <div class="btn" pDraggable="true" (onDragStart)="dragStart($event,group,false)"><i class="fa fa-bars"   aria-hidden="true"></i></div>
+         <button class="btn btn-success btn-sm pull-right" (click)="groupAddStep($event,group)">+</button>
+        <ul class="list-group" pDroppable="true" >
+         
+          <li  class="list-group-item" *ngFor="let step of group.steps; let j=index;" 
+              pDroppable="true"
+              (onDrop)="onDrop($event,group,step)"
+              
+             
+            >
+              <div class="row"
+               pDraggable="true"
+               (onDragStart)="dragStart($event,group,step)"
+              
+               (onDragEnd)="dragEnd($event,group,step)"
+              >
+                  <div class="col-md-10">
+                    <input type="text" id="step_{{i}}_{{j}}" name="step_{{i}}_{{j}}" [(ngModel)]="groupSteps[i].steps[j].name" class="form-control" />
+                  </div>
+                  <div class="col-md-2">
+                      <button class="btn btn-danger" (click)="groupRemoveStep($event,group,step)">REMOVE</button>
+                  </div>
+              </div>
+              
+              
+          </li>
+        </ul>
+        <br/><br/>
+      </div>
+      
+  </div>
+    <button class="btn btn-primary" (click)="addGroup($event)">ADD GROUP</button>
+</div>
