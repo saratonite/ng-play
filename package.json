@@ -2,6 +2,10 @@
   "name": "ng4app",
   "version": "0.0.0",
   "license": "MIT",
+  "author": {
+    "name": "Sarath TK (The Kind)",
+    "email": "sarath@notetech.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

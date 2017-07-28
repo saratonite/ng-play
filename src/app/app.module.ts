@@ -9,13 +9,15 @@ import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component
 import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule  } from 'primeng/primeng';
 import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 import { GroupStepsComponent } from './group-steps/group-steps.component';
+import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WhySoSeriousComponent,
     PngTryTreeComponent,
-    GroupStepsComponent
+    GroupStepsComponent,
+    GroupStepsTreeComponent
   ],
   imports: [
     BrowserModule,

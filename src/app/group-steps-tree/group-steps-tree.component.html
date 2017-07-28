@@ -1,0 +1,73 @@
+<div>
+  <h3>Grouped step tree</h3>
+
+  <div class="card card-outline-secondary mb-3 " style="padding:20px;">
+      <div  style="padding:5px;text-align:right">
+        <button class="btn btn-primary" (click)="addStep($event)">ADD STEP</button>
+        <button class="btn btn-primary" (click)="addGrupStep($event)">ADD GROUP</button>
+      </div>
+    <div class="card" *ngFor="let step of  rootSteps; let i = index;" style="margin:5px;padding: 1.25rem;">
+      <!--Single Step  -->
+        <div *ngIf="!step.childSteps">
+            <div class="row" pDroppable="true">
+              <div class="col-md-2">
+                <span class="btn" pDraggable="true" (onDragStart)="onDragStart($event,step)"><i class="fa fa-bars"></i></span>
+              </div>
+              <div class="col-md-2">
+                <select *ngIf="i !== 0" class="form-control">
+                  <option value="1">AND</option>
+                  <option value="2">OR</option>
+                </select>
+              </div>
+              <div class="col-md-1">
+                <input type="number" class="form-control" [(ngModel)]="rootSteps[i].count">
+              </div>
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-danger" (click)="removeStep($event,step)">REMOVE</button>
+              </div>
+            </div>
+        </div>
+
+      <!--Nested Steps  -->
+      <div *ngIf="step.childSteps && step.childSteps.length" class="">
+        
+        <div class="header" style="padding:5px;">
+          <span class="btn" pDraggable="true" (onDragStart)="onDragStart($event,step)" ><i class="fa fa-bars"></i></span>
+          <button class="btn btn-success pull-right" (click)="addChildStep($event,step)">ADD</button>
+        </div>
+        <div  class="card" *ngFor="let childStep of step.childSteps; let j = index;"   style="margin:15px;">
+             <div class="card-block row"  pDroppable="true">
+               <span class="btn" pDraggable="true" (onDragStart)="onDragStart($event,childStep,step)"><i class="fa fa-bars"></i></span>
+              <div class="col-md-2">
+                <select *ngIf="i !== 0" class="form-control">
+                  <option value="1">AND</option>
+                  <option value="2">OR</option>
+                </select>
+              </div>
+              <div class="col-md-1">
+                <input type="number" class="form-control" [(ngModel)]="rootSteps[i].childSteps[j].count">
+              </div>
+              <div class="col-md-5">
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-danger" (click)="removeChildStep($event,step,childStep)">REMOVE</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>

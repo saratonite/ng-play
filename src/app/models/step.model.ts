@@ -1,5 +1,10 @@
 export class Step {
 
-    id:number;
-    name:string;
+    stepId: number;
+    beforeAndOrId: number;
+    withinAndOrId: number;
+    groupNumber: number;
+    count: number;
+    selectedStepKeys: string[];
+    childSteps: [];
 }
