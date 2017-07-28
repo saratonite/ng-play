@@ -10,6 +10,7 @@ import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule  } from 
 import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 import { GroupStepsComponent } from './group-steps/group-steps.component';
 import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.component';
+import { DragAndDropExampleComponent } from './drag-and-drop-example/drag-and-drop-example.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.com
     WhySoSeriousComponent,
     PngTryTreeComponent,
     GroupStepsComponent,
-    GroupStepsTreeComponent
+    GroupStepsTreeComponent,
+    DragAndDropExampleComponent
   ],
   imports: [
     BrowserModule,

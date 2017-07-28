@@ -1,0 +1,21 @@
+.dd-wrapper {
+    background-color: pink;
+    padding: 5px;
+    height: 200px;
+}
+
+.dd-dragon {
+    display: flex;
+    background-color: #568;
+    margin:5px;
+    padding: 5px;
+}
+
+.dd-dragon div {
+    flex-grow: 1;
+}
+
+.dd-dragon-child {
+    background-color: #f56;
+    height: 50px;
+}

@@ -5,6 +5,6 @@ export class Step {
     withinAndOrId: number;
     groupNumber: number;
     count: number;
-    selectedStepKeys: string[];
-    childSteps: [];
+    // selectedStepKeys: string[];
+    // childSteps: any[];
 }

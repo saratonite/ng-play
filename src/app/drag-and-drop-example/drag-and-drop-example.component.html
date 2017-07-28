@@ -1,0 +1,11 @@
+
+  <div class="dd-wrapper">
+      <div class="dd-dragon" pDraggable="true" *ngFor="let people of peoples"  pDroppable="true" (onDrop)='onDropHandler($event)'>
+        
+        <div>{{people}}</div>
+
+        <div class="dd-dragon-child"  pDroppable="true" (onDrop)="onDropChild($event)">
+          Kid
+        </div>
+      </div>
+  </div>
