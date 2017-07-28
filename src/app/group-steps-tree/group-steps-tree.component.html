@@ -9,7 +9,7 @@
     <div class="card" *ngFor="let step of  rootSteps; let i = index;" style="margin:5px;padding: 1.25rem;">
       <!--Single Step  -->
         <div *ngIf="!step.childSteps">
-            <div class="row" pDroppable="true">
+            <div class="row" pDroppable="true" (onDrop)="onDrop($event,step)">
               <div class="col-md-2">
                 <span class="btn" pDraggable="true" (onDragStart)="onDragStart($event,step)"><i class="fa fa-bars"></i></span>
               </div>
@@ -43,7 +43,7 @@
           <button class="btn btn-success pull-right" (click)="addChildStep($event,step)">ADD</button>
         </div>
         <div  class="card" *ngFor="let childStep of step.childSteps; let j = index;"   style="margin:15px;">
-             <div class="card-block row"  pDroppable="true">
+             <div class="card-block row"  pDroppable="true" (onDrop)="onDrop($event,childStep,step)">
                <span class="btn" pDraggable="true" (onDragStart)="onDragStart($event,childStep,step)"><i class="fa fa-bars"></i></span>
               <div class="col-md-2">
                 <select *ngIf="i !== 0" class="form-control">

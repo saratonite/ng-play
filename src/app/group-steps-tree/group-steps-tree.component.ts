@@ -36,37 +36,37 @@ export class GroupStepsTreeComponent implements OnInit {
     this.rootSteps = [ 
       {
         beforeAndOrId:null,
-        count:0,
+        count:1,
         withinAndOrId:null,
         selectedStepKeys:''
       },
       {
         beforeAndOrId:null,
-        count:5,
+        count:2,
         withinAndOrId:null,
         selectedStepKeys:''
       },
       {
         beforeAndOrId:null,
-        count:0,
+        count:3,
         withinAndOrId:null,
         selectedStepKeys:''
       },
       {
         beforeAndOrId:null,
-        count:0,
+        count:4,
         withinAndOrId:null,
         selectedStepKeys:'',
         childSteps:[
           {
             beforeAndOrId:null,
-            count:0,
+            count:5,
             withinAndOrId:null,
             selectedStepKeys:''
           },
           {
             beforeAndOrId:null,
-            count:0,
+            count:6,
             withinAndOrId:null,
             selectedStepKeys:''
           }
@@ -201,7 +201,9 @@ export class GroupStepsTreeComponent implements OnInit {
 
   onDragStart($e,step,parentStep = null) {
 
-    console.log(step);
+   // console.log(step);
+
+    this.draggedParentStep = null;
 
     this.draggedStep = step;
 
@@ -210,6 +212,127 @@ export class GroupStepsTreeComponent implements OnInit {
       this.draggedParentStep = parentStep;
     }
 
+  }
+
+
+  onDrop($event,step,parentStep = null) {
+
+    
+    console.log('Step ---- ',step);
+    console.log('Step parent --',parentStep);
+
+
+      let draggedIndex = -1;
+      let draggedParentIndex = -1;
+
+      let dropedIndex = -1;
+      let dropParentIndex = -1;
+
+      if(this.draggedParentStep) {
+
+        draggedParentIndex = this.getStepIndex(this.draggedParentStep);
+        draggedIndex = this.getStepIndex(this.draggedStep,this.draggedParentStep)
+      }
+
+      else {
+
+        draggedIndex  = this.getStepIndex(this.draggedStep);
+      }
+
+      if(parentStep) {
+        
+        dropedIndex= this.getStepIndex(step,parentStep);
+        console.log('Drop index',dropedIndex);
+        dropParentIndex = this.getStepIndex(parentStep);
+
+      }
+      else {
+
+        dropedIndex= this.getStepIndex(step);
+      }
+       
+
+
+      // TODO: from GROUP to global
+      
+      // TODO: Moving global over Group
+
+
+
+    console.log('Draged parent step',this.draggedParentStep);
+
+    
+
+      if(dropParentIndex > -1) { //FIXME: From global to group and group to group
+        alert('--'+dropParentIndex);
+
+      //   if(draggedIndex > dropedIndex) {
+
+
+        console.log(dropedIndex,this.rootSteps[dropParentIndex].childSteps.length)
+
+        let currentLength = this.rootSteps[dropParentIndex].childSteps.length;
+        for(let i= currentLength-1; i >= dropedIndex ; i--) {
+
+          this.rootSteps[dropParentIndex].childSteps[i + 1] = this.rootSteps[dropParentIndex].childSteps[i];
+
+          console.log('---------'+(i+1)+' = ',i);
+
+          if(i>5) {
+            console.log('Infinite error');
+            break;
+
+          }
+
+
+        }
+
+
+
+
+      this.rootSteps[dropParentIndex].childSteps[dropedIndex] = this.draggedStep;
+
+
+      if(draggedParentIndex > -1) {
+
+         this.rootSteps[draggedParentIndex].childSteps.splice(draggedIndex,1)
+
+      }
+      else {
+
+        this.rootSteps.splice(draggedIndex,1);
+      }
+
+      
+        return true;
+      }
+      
+
+      /// Gobal Steps ----------------------------------------------------------
+
+      if(draggedIndex > dropedIndex) {
+
+        for(let i = (draggedIndex - 1) ; i >= dropedIndex ; i-- ) {
+          this.rootSteps[i+1] = this.rootSteps[i];
+        }
+
+      }
+      else {
+        for(let i = (draggedIndex+1) ; i <= dropedIndex ; i++ ) {
+          this.rootSteps[i - 1] = this.rootSteps[i];
+        }
+  
+      }
+
+
+
+      this.rootSteps[dropedIndex] = this.draggedStep;
+
+
+    
+
+    this.draggedParentStep = null;
+    this.draggedStep = null;
   }
 
   
