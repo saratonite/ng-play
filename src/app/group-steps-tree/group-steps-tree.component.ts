@@ -217,9 +217,6 @@ export class GroupStepsTreeComponent implements OnInit {
 
   onDrop($event,step,parentStep = null) {
 
-    
-    console.log('Step ---- ',step);
-    console.log('Step parent --',parentStep);
 
 
       let draggedIndex = -1;
@@ -257,19 +254,72 @@ export class GroupStepsTreeComponent implements OnInit {
       
       // TODO: Moving global over Group
 
+    //Case 1 From group to global 
 
 
-    console.log('Draged parent step',this.draggedParentStep);
+    if(draggedParentIndex > -1 && dropParentIndex == - 1) {
 
+      console.log('CASE 1 From group to global ')
+        // Remove draged item from parent element
+
+        this.rootSteps[draggedParentIndex].childSteps.splice(draggedIndex,1);
+
+        if(this.rootSteps[draggedParentIndex].childSteps.length == 0 ) {
+
+          //Remove parent element
+
+          this.rootSteps.splice(draggedParentIndex,1);
+
+        }
+
+         let currentLength = this.rootSteps.length;
+
+        for(let i= currentLength-1; i >= dropedIndex ; i--) {
+
+          this.rootSteps[i + 1] = this.rootSteps[i];
+
+
+        }
+        
+        
+        this.rootSteps[dropedIndex] = this.draggedStep;
+        return ;
+
+    }
+
+
+
+    // Case 1 End From group to global 
     
+    // CASE 2  From global to group
+      if(dropParentIndex > -1) { 
 
-      if(dropParentIndex > -1) { //FIXME: From global to group and group to group
-        alert('--'+dropParentIndex);
+        console.log('CASE 2 From global to group')
+    /// Moving elements iside group----
 
-      //   if(draggedIndex > dropedIndex) {
+        if(draggedParentIndex == dropParentIndex ) {  
+          console.log('Same group!!!!')
 
+            if(draggedIndex > dropedIndex) {
 
-        console.log(dropedIndex,this.rootSteps[dropParentIndex].childSteps.length)
+              for(let i = (draggedIndex - 1) ; i >= dropedIndex ; i-- ) {
+                this.rootSteps[dropParentIndex].childSteps[i+1] = this.rootSteps[dropParentIndex].childSteps[i];
+              }
+
+            }
+            else {
+              for(let i = (draggedIndex+1) ; i <= dropedIndex ; i++ ) {
+                this.rootSteps[dropParentIndex].childSteps[i - 1] = this.rootSteps[dropParentIndex].childSteps[i];
+              }
+        
+            }
+
+            this.rootSteps[dropParentIndex].childSteps[dropedIndex] = this.draggedStep;
+
+          return ;
+        }
+        // from global to group 
+        console.info('From global to group or group to group')
 
         let currentLength = this.rootSteps[dropParentIndex].childSteps.length;
         for(let i= currentLength-1; i >= dropedIndex ; i--) {
@@ -286,16 +336,16 @@ export class GroupStepsTreeComponent implements OnInit {
 
 
         }
-
-
-
-
       this.rootSteps[dropParentIndex].childSteps[dropedIndex] = this.draggedStep;
 
 
       if(draggedParentIndex > -1) {
 
          this.rootSteps[draggedParentIndex].childSteps.splice(draggedIndex,1)
+
+         if(this.rootSteps[draggedParentIndex].childSteps.length == 0) {
+           this.rootSteps.splice(draggedParentIndex,1)
+         }
 
       }
       else {
@@ -308,7 +358,7 @@ export class GroupStepsTreeComponent implements OnInit {
       }
       
 
-      /// Gobal Steps ----------------------------------------------------------
+/// Gobal Steps ----------------------------------------------------------
 
       if(draggedIndex > dropedIndex) {
 
@@ -333,6 +383,43 @@ export class GroupStepsTreeComponent implements OnInit {
 
     this.draggedParentStep = null;
     this.draggedStep = null;
+  }
+
+  onDropGroupHeader($event, parentStep) {
+
+    console.log('Hraaaaaa', parentStep)
+
+    console.log('-',this.draggedStep);
+
+    let draggedIndex = this.getStepIndex(this.draggedStep);
+    let dropedIndex = this.getStepIndex(parentStep);
+
+    console.log('Dragged index ',draggedIndex);
+    console.log('Dropped index ',dropedIndex);
+
+    if(this.draggedParentStep) {
+
+      return false;
+    }
+
+    if(draggedIndex > dropedIndex) {
+
+        for(let i = (draggedIndex - 1) ; i >= dropedIndex ; i-- ) {
+          this.rootSteps[i+1] = this.rootSteps[i];
+        }
+
+      }
+      else {
+        for(let i = (draggedIndex+1) ; i <= dropedIndex ; i++ ) {
+          this.rootSteps[i - 1] = this.rootSteps[i];
+        }
+  
+    }
+
+    this.rootSteps[dropedIndex] = this.draggedStep;
+  
+
+
   }
 
   
