@@ -23,7 +23,11 @@
      <!-- <app-group-steps></app-group-steps>  -->
     <app-group-steps-tree></app-group-steps-tree>
   </section>
-
+  <section>
+      <p *ngFor="let p of peoples; let i = index;" >
+          {{p.name}} ({{p.order}}) <input name="i" type="text" [ngModel]="p.order ? p.order : i "  /> / {{aVariable}}
+      </p>
+  </section>
 
   
   

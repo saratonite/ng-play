@@ -10,5 +10,7 @@ export class AppComponent {
   inputType = 'text';
   funnyText = 'Why so serious :| ?'
 
+  peoples = [{name:'Foo',order:0},{name:'Bar',order:0},{name:'Baz',order:0}];
+
   displayFix:false;
 }
