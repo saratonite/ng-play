@@ -11,6 +11,8 @@ import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 import { GroupStepsComponent } from './group-steps/group-steps.component';
 import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.component';
 import { DragAndDropExampleComponent } from './drag-and-drop-example/drag-and-drop-example.component';
+import { changeOrder } from './pipes/orderChange';
+import { PngTryTreeTableComponent } from './png-try-tree-table/png-try-tree-table.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DragAndDropExampleComponent } from './drag-and-drop-example/drag-and-dr
     PngTryTreeComponent,
     GroupStepsComponent,
     GroupStepsTreeComponent,
-    DragAndDropExampleComponent
+    DragAndDropExampleComponent,
+    changeOrder,
+    PngTryTreeTableComponent
   ],
   imports: [
     BrowserModule,
