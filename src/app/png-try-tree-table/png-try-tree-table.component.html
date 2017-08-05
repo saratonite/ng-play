@@ -1,10 +1,22 @@
-<p>
+<div>
   png-try-tree-table works!
   <input #gb type="text" placeholder="Global search">
-  <p-treeTable [value]="treeData" selectionMode="checkbox" [(selection)]="selectedFiles2" [style]="{'margin-top':'50px'}" [globalFilter]="gb" (onNodeSelect)="onNodeSelectHandler($event)">
-    <p-header>Basic</p-header>
+  <div>
+     <p-autoComplete [(ngModel)]="text" [suggestions]="results" (completeMethod)="search($event)"></p-autoComplete>
+  </div>
+ 
+  <p-treeTable [value]="treeData" 
+    [(selection)]="selectedNodes" selectionMode="checkbox"  
+    [style]="{'margin-top':'5px'}" [globalFilter]="gb"
+     (onNodeSelect)="onNodeSelectHandler($event)"
+    >
     <p-column field="name" header="Name"></p-column>
     <p-column field="description" header="Description"></p-column>
   
 </p-treeTable>
-</p>
+
+</div>
+<div>
+ 
+</div>
+

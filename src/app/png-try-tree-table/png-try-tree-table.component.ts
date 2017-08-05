@@ -7,7 +7,24 @@ import { TreeNode } from 'primeng/primeng';
 })
 export class PngTryTreeTableComponent implements OnInit {
 
+  private selectedNodes : Array<any> = [];
+
+
+  // Autocomplete 
+
+  private searchText : string = '';
+
+  private results : Array<any> = [];
+
   constructor() { }
+
+  search($e) {
+
+    console.log('auto complete ', this.results)
+
+    this.results = ['Apple','Bat','Cat','Dog']
+
+  }
 
   treeData:any[] = [
     {
@@ -197,6 +214,7 @@ export class PngTryTreeTableComponent implements OnInit {
 
   onNodeSelectHandler($e) {
     console.log('Selection ',$e)
+    console.log('-------->',this.selectedNodes);
   }
 
 }

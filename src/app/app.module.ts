@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component';
 
 // PrimeNg Components
-import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule ,TreeTableModule,SharedModule } from 'primeng/primeng';
+import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule ,TreeTableModule,SharedModule, AutoCompleteModule } from 'primeng/primeng';
 import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 import { GroupStepsComponent } from './group-steps/group-steps.component';
 import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.component';
@@ -32,7 +32,8 @@ import { PngTryTreeTableComponent } from './png-try-tree-table/png-try-tree-tabl
     TreeModule,
     DragDropModule,
     TreeTableModule,
-    SharedModule
+    SharedModule,
+    AutoCompleteModule
   ],
   providers: [
     TreeDragDropService
