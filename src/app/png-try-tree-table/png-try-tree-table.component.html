@@ -1,0 +1,10 @@
+<p>
+  png-try-tree-table works!
+  <input #gb type="text" placeholder="Global search">
+  <p-treeTable [value]="treeData" selectionMode="checkbox" [(selection)]="selectedFiles2" [style]="{'margin-top':'50px'}" [globalFilter]="gb" (onNodeSelect)="onNodeSelectHandler($event)">
+    <p-header>Basic</p-header>
+    <p-column field="name" header="Name"></p-column>
+    <p-column field="description" header="Description"></p-column>
+  
+</p-treeTable>
+</p>

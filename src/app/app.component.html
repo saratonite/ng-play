@@ -18,16 +18,19 @@
     <app-png-try-tree></app-png-try-tree>
   </section> -->
 
-  <section>
+  <!-- <section>
     <h3>Group Section</h3>
-     <!-- <app-group-steps></app-group-steps>  -->
+      <app-group-steps></app-group-steps>  
     <app-group-steps-tree></app-group-steps-tree>
   </section>
   <section>
       <p *ngFor="let p of (peoples | changeOrder) ; let i = index;" >
           {{p.name}} ({{p.order}}) <input name="i" type="text" [(ngModel)]="p.order"  /> 
       </p>
-  </section>
+  </section> -->
+    <section>
+      <app-png-try-tree-table></app-png-try-tree-table>
+    </section>
 
   
   
