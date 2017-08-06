@@ -1,4 +1,4 @@
- [
+ export default [
     {
         "drugId": 1,
         "name": "Drug1",

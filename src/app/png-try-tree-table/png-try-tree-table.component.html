@@ -11,12 +11,11 @@
      (onNodeSelect)="onNodeSelectHandler($event)"
     >
     <p-column field="name" header="Name"></p-column>
-    <p-column field="description" header="Description"></p-column>
   
 </p-treeTable>
 
 </div>
 <div>
- 
+  <button (click)="parseTreeNodeToProducts()">Log Selection</button>
 </div>
 
