@@ -31,7 +31,7 @@ export class PngTryTreeTableComponent implements OnInit {
       console.log('Search',data)
       console.info(data.data.name.toLowerCase().indexOf(this.searchText))
       if(data.data.name.toLowerCase().indexOf(this.searchText) > -1) {
-        return data
+        return data;
       }
     }).map(data=> data.data.name)
 
