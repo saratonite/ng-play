@@ -1,0 +1,11 @@
+<p>
+  example-ng-tree-table works!
+  <ay-treeTable [value]="data"
+  [(selection)]="selectedItems"
+  selectionMode="checkbox">
+    <ay-column field="name" header="Name"></ay-column>
+    <ay-column field="gender" header="Gender"></ay-column>
+</ay-treeTable>
+
+  {{ selectedItems | json}}
+</p>

@@ -7,12 +7,14 @@ import { WhySoSeriousComponent } from './why-so-serious/why-so-serious.component
 
 // PrimeNg Components
 import {ButtonModule , TreeModule, TreeDragDropService , DragDropModule ,TreeTableModule,SharedModule, AutoCompleteModule } from 'primeng/primeng';
+import {TreeTableModule as NGTreeTableModule } from "ng-treetable";
 import { PngTryTreeComponent } from './png-try-tree/png-try-tree.component';
 import { GroupStepsComponent } from './group-steps/group-steps.component';
 import { GroupStepsTreeComponent } from './group-steps-tree/group-steps-tree.component';
 import { DragAndDropExampleComponent } from './drag-and-drop-example/drag-and-drop-example.component';
 import { changeOrder } from './pipes/orderChange';
 import { PngTryTreeTableComponent } from './png-try-tree-table/png-try-tree-table.component';
+import { ExampleNgTreeTableComponent } from './example-ng-tree-table/example-ng-tree-table.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PngTryTreeTableComponent } from './png-try-tree-table/png-try-tree-tabl
     GroupStepsTreeComponent,
     DragAndDropExampleComponent,
     changeOrder,
-    PngTryTreeTableComponent
+    PngTryTreeTableComponent,
+    ExampleNgTreeTableComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { PngTryTreeTableComponent } from './png-try-tree-table/png-try-tree-tabl
     DragDropModule,
     TreeTableModule,
     SharedModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    NGTreeTableModule
   ],
   providers: [
     TreeDragDropService
